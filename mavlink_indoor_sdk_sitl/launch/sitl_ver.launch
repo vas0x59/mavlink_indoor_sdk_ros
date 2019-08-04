@@ -1,0 +1,11 @@
+<launch>
+    <remap from="image" to="/iris/usb_cam/image_raw"/>
+    <remap from="camera_info" to="/iris/usb_cam/camera_info"/>
+
+    <arg name="config_path" default="$(find copter_aruco_nav_sitl)/config/config.yml"/>
+    
+
+    <node name="sitl_ver_node" pkg="copter_aruco_nav_sitl" type="sitl_ver_node" output="screen" >
+        <param name="config_path" type="string" value="$(arg config_path)" />
+    </node>
+</launch>
