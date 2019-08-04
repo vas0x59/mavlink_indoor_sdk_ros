@@ -17,13 +17,13 @@ find_package(catkin REQUIRED COMPONENTS
 )
 find_package( OpenCV REQUIRED )
 
-include_directories("./mavlink_indoor_sdk/mavlink/v2.0/common")
+include_directories("./src/mavlink_indoor_sdk/mavlink/v2.0/common")
 
 # Markers
-include_directories("./markers_lib/src")
+include_directories("./src/markers_lib/src")
 
 #SDK
-include_directories("./mavlink_indoor_sdk/src")
+include_directories("./src/mavlink_indoor_sdk/src")
 
 
 catkin_package(
@@ -43,7 +43,8 @@ add_executable(udp_vpe_sitl src/udp_vpe_sitl.cpp)
 target_link_libraries(udp_vpe_sitl
     #mavlink_indoor_sdk
     pthread
-    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/libmavlink_indoor_sdk.s
-    ${PROJECT_SOURCE_DIR}/markers_lib/libmarkers_lib.so
+    ${PROJECT_SOURCE_DIR}/src/mavlink_indoor_sdk/libmavlink_indoor_sdk.so
+    ${PROJECT_SOURCE_DIR}/src/markers_lib/libmarkers_lib.so
+    ${catkin_LIBRARIES}
     ${OpenCV_LIBS}
 )
